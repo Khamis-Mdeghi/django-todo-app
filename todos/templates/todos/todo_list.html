@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Todo List</title>
+</head>
+<body>
+    <div>
+        Welcome, {{ request.user.username }}! |
+        <a href="{% url 'password_change' %}">Change Password</a> |
+        <form method="POST" action="{% url 'logout' %}" style="display:inline">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    <h1>My Todos</h1>
+    <a href="{% url 'todo_add' %}">+ Add New Todo</a>
+    <hr>
+    {% for todo in todos %}
+        <div>
+            <h3>{{ todo.title }}</h3>
+            <p>{{ todo.description }}</p>
+            <p>Status: {% if todo.completed %} ✅ Done {% else %} ⏳ Pending {% endif %}</p>
+
+            {% if not todo.completed %}
+                <a href="{% url 'todo_complete' todo.pk %}">✅ Mark Complete</a> |
+            {% endif %}
+            <a href="{% url 'todo_edit' todo.pk %}">✏️ Edit</a> |
+            <a href="{% url 'todo_delete' todo.pk %}">🗑️ Delete</a>
+        </div>
+    <hr>
+    {% endfor %}
+</body>
+</html>
