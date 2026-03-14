@@ -9,7 +9,7 @@ urlpatterns = [
     path('edit/<int:pk>/', views.todo_edit, name='todo_edit'),
     path('delete/<int:pk>/', views.todo_delete, name='todo_delete'),
     path('register/', views.register, name='register'),
-
+    path('category_add/', views.category_add, name='category_add'),
     # API endpoints for React
     path('api/', views.api_todo_list, name='api_todo_list'),
     path('api/<int:pk>/', views.api_todo_detail, name='api_todo_detail'),

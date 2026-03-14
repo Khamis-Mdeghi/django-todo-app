@@ -13,12 +13,21 @@
         </form>
     </div>
     <h1>My Todos</h1>
-    <a href="{% url 'todo_add' %}">+ Add New Todo</a>
+    <a href="{% url 'todo_add' %}">+ Add New Todo</a> |
+    <a href="{% url 'category_add' %}">+ Add Category</a>
     <hr>
     {% for todo in todos %}
         <div>
             <h3>{{ todo.title }}</h3>
             <p>{{ todo.description }}</p>
+            <p>
+                Category:
+                {% if todo.category %}
+                    {{ todo.category.name }}
+                {% else %}
+                    No category
+                {% endif %}
+            </p>
             <p>Status: {% if todo.completed %} ✅ Done {% else %} ⏳ Pending {% endif %}</p>
 
             {% if not todo.completed %}

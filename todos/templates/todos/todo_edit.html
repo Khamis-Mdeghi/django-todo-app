@@ -12,6 +12,16 @@
         <input type="text" name="title" value="{{ todo.title }}" required><br><br>
         <label>Description:</label><br>
         <textarea name="description">{{ todo.description }}</textarea><br><br>
+        <label>Category:</label><br>
+        <select name="category">
+            <option value="">-- No Category --</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}"
+                    {% if todo.category.id == category.id %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select><br><br>
         <button type="submit">Save Changes</button>
     </form>
 
