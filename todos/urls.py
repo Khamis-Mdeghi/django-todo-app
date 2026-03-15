@@ -10,7 +10,11 @@ urlpatterns = [
     path('delete/<int:pk>/', views.todo_delete, name='todo_delete'),
     path('register/', views.register, name='register'),
     path('category_add/', views.category_add, name='category_add'),
-    # API endpoints for React
+    # react api ⬇️⬇️⬇️
+    # Todo API :
     path('api/', views.api_todo_list, name='api_todo_list'),
     path('api/<int:pk>/', views.api_todo_detail, name='api_todo_detail'),
+    # Category API :
+    path('api/categories/', views.api_category_list, name='api_category_list'),
+    path('api/categories/<int:pk>/', views.api_category_detail, name='api_category_detail'),
 ]
