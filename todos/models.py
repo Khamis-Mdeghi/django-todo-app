@@ -11,6 +11,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'  # fixes "Categorys" in admin
+        unique_together = ['name', 'user']  # fixes duplicated categories 
 class Todo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(
